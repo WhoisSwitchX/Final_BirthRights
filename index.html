@@ -1,41 +1,3 @@
-### HTML Structure
-
-1. **Header and Sidebar**:
-    - The sidebar contains navigation links and a toggle button to open/close it.
-    - The `header` within the sidebar includes the logo and toggle icon.
-    - The `menu-bar` div includes navigation links and a bottom content section with profile and logout links.
-
-2. **Main Content Section**:
-    - The `home` section contains the main content of the page.
-    - The `header` inside the `home` section includes a title and a name.
-    - The `table-container` div houses a search input and a table with employee data.
-    - Each row in the table has employee details and a dropdown for selecting birthrights.
-
-### JavaScript Functionality
-
-- **Sidebar Toggle**: Toggles the sidebar visibility.
-- **Search Box**: Ensures the sidebar is open when the search box is clicked.
-- **Mode Switch**: Toggles between dark and light modes.
-
-### Integration Plan
-
-1. **Add Multi-Select Dropdown**:
-    - Create a multi-select dropdown similar to the one provided in your first code snippet.
-    - Replace the existing single-select dropdowns for birthrights in the table with the new multi-select dropdown.
-
-2. **Modify Styles**:
-    - Ensure styles from the first code snippet are integrated properly into your existing stylesheet.
-
-3. **Update JavaScript**:
-    - Integrate the JavaScript functionality from the first code snippet to handle the multi-select dropdown behavior.
-
-Let's start with integrating the multi-select dropdown into the existing employee table.
-
-### HTML Integration
-
-Replace the existing `select` elements in the table rows with the new multi-select dropdown structure.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +14,7 @@ Replace the existing `select` elements in the table rows with the new multi-sele
         <header>
             <div class="image-text">
                 <span class="image">
-                    <img src="./Images/pngegg.png" alt="RBL Logo" />
+                    <img src="./Images/pngegg.png" alt="RBL" />
                 </span>
                 <div class="text logo-text">
                     <span class="name">iManage Portal</span>
@@ -109,13 +71,18 @@ Replace the existing `select` elements in the table rows with the new multi-sele
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
+
+
+
             </div>
         </div>
     </nav>
     <section class="home">
         <div class="header">
             <div class="title">Birthrights</div>
-            <div class="name">Saurabh Mathe</div>
+            <div class="name"><i class="bx bx-user-circle icon-profile"></i>
+              Saurabh Mathe</div>
+           
         </div>
         <div class="table-container">
             <div class="table-controls">
@@ -321,6 +288,7 @@ Replace the existing `select` elements in the table rows with the new multi-sele
             } else {
                 modeText.innerText = "Dark mode";
             }
+            
         });
     </script>
 </body>

@@ -101,7 +101,7 @@ body.dark {
 
 .sidebar .text {
     font-size: 19px;
-    font-weight: 500;
+    font-weight: bold;
     white-space: nowrap;
     opacity: 1;
 }
@@ -129,7 +129,8 @@ body.dark {
 header .image-text .name {
     margin-top: 2px;
     font-size: 18px;
-    font-weight: 600;
+    color: #0b3a86;
+    font-weight: 1000;
 }
 
 header .image-text .profession {
@@ -394,6 +395,11 @@ body.dark .home .text {
     padding-left: 40px; /* Increase padding for more gap */
 }
 
+.sidebar .text, .sidebar .icon {
+    color: #2a28ad;
+    transition: var(--tran-03);
+}
+
 .home .text {
     font-size: 30px;
     font-weight: 500;
@@ -505,13 +511,14 @@ body {
     background-color: transparent;
     border-bottom: 1px solid #dfccf4;
     justify-content: space-between;
-    
+    color: #0b3a86;
     margin-right: 20px;
     border-radius: 10px;
     font-size: 18px;
     font-weight: bold;
 }
 /* .header .title {
+
     margin-left: 10px;
     font-size: 18px;
     font-weight: bold;
@@ -522,11 +529,8 @@ body {
     font-weight: bold;
 } */
 
-
-
-
 body {
-    background: #26C4DC;
+    background-color: var(--body-color);
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
 }
@@ -546,8 +550,8 @@ body {
 }
 .msd_label {
     background: #fff;
-    height: 40px;
-    line-height: 40px;
+    height: 35px;
+    line-height: 35px;
     display: block;
     padding: 0 20px;
     border-radius: 5px;
@@ -611,3 +615,7 @@ body {
     display: none;
 }
 
+.icon-profile {
+    font-size: 24px; /* Adjust size as needed */
+    margin-left: 5px; /* Adjust spacing as needed */
+}
