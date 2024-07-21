@@ -7,7 +7,90 @@
     <title>iManage Portal</title>
     <link rel="stylesheet" href="style.css" />
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
-   
+    <style>
+        .msd {
+            position: relative;
+            display: inline-block;
+            width: 200px; /* Fixed size */
+        }
+        .msd_label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            background: #f9f9f9;
+            color: #333;
+            text-align: center;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        .msd_label.centered-text {
+            text-align: center;
+        }
+        .msd_options_container {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            border: 1px solid #ccc;
+            background: #fff;
+            z-index: 10;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .msd_options {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .msd_options_option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .msd_options_option:hover {
+            background: #f0f0f0;
+        }
+        .msd_options_option input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: blue; /* Set checkbox circle color to blue */
+        }
+        .selected-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        .selected-item {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            font-size: 12px;
+        }
+        .selected-item .remove {
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .submit-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <nav class="sidebar close">
@@ -71,18 +154,13 @@
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
-
-
-
             </div>
         </div>
     </nav>
     <section class="home">
         <div class="header">
             <div class="title">Birthrights</div>
-            <div class="name"><i class="bx bx-user-circle icon-profile"></i>
-              Saurabh Mathe</div>
-           
+            <div class="name"><i class="bx bx-user-circle icon-profile"></i> Saurabh Mathe</div>
         </div>
         <div class="table-container">
             <div class="table-controls">
@@ -100,6 +178,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Repeat rows as needed -->
                     <tr>
                         <td>11553</td>
                         <td>Niki Kushe</td>
@@ -108,140 +187,28 @@
                         <td>Mumbai</td>
                         <td>
                             <div class="msd">
-                                <label class="msd_label js-msd">Select  <i class="msd_label_icon fas fa-chevron-down"></i></label>
+                                <label class="msd_label js-msd centered-text">SELECT <i class="msd_label_icon fas fa-chevron-down"></i></label>
                                 <div class="msd_options_container js-msds">
                                     <div class="msd_options">
                                         <label for="finacle" class="msd_options_option">
-                                            Finacle
                                             <input id="finacle" type="checkbox" name="birthrights[]" value="Finacle" class="msd_options_checkbox js-msdCheck">
+                                            Finacle
                                         </label>
                                         <label for="crm" class="msd_options_option">
-                                            CRM
                                             <input id="crm" type="checkbox" name="birthrights[]" value="CRM" class="msd_options_checkbox js-msdCheck">
+                                            CRM
                                         </label>
                                         <label for="aadhar-vault" class="msd_options_option">
-                                            Aadhar Vault
                                             <input id="aadhar-vault" type="checkbox" name="birthrights[]" value="Aadhar Vault" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11554</td>
-                        <td>Abhijit Chaudhury</td>
-                        <td>Lead</td>
-                        <td>Process Executive</td>
-                        <td>Delhi</td>
-                        <td>
-                            <div class="msd">
-                                <label class="msd_label js-msd">Select  <i class="msd_label_icon fas fa-chevron-down"></i></label>
-                                <div
-
- class="msd_options_container js-msds">
-                                    <div class="msd_options">
-                                        <label for="finacle2" class="msd_options_option">
-                                            Finacle
-                                            <input id="finacle2" type="checkbox" name="birthrights[]" value="Finacle" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                        <label for="crm2" class="msd_options_option">
-                                            CRM
-                                            <input id="crm2" type="checkbox" name="birthrights[]" value="CRM" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                        <label for="aadhar-vault2" class="msd_options_option">
                                             Aadhar Vault
-                                            <input id="aadhar-vault2" type="checkbox" name="birthrights[]" value="Aadhar Vault" class="msd_options_checkbox js-msdCheck">
                                         </label>
                                     </div>
                                 </div>
                             </div>
+                            <div class="selected-items" id="selected-items-11553"></div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>11555</td>
-                        <td>Saurabh Mathe</td>
-                        <td>Developer</td>
-                        <td>Full Stack Developer</td>
-                        <td>Bangalore</td>
-                        <td>
-                            <div class="msd">
-                                <label class="msd_label js-msd">Select  <i class="msd_label_icon fas fa-chevron-down"></i></label>
-                                <div class="msd_options_container js-msds">
-                                    <div class="msd_options">
-                                        <label for="finacle3" class="msd_options_option">
-                                            Finacle
-                                            <input id="finacle3" type="checkbox" name="birthrights[]" value="Finacle" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                        <label for="crm3" class="msd_options_option">
-                                            CRM
-                                            <input id="crm3" type="checkbox" name="birthrights[]" value="CRM" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                        <label for="aadhar-vault3" class="msd_options_option">
-                                            Aadhar Vault
-                                            <input id="aadhar-vault3" type="checkbox" name="birthrights[]" value="Aadhar Vault" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11556</td>
-                        <td>Shraddha Sawant</td>
-                        <td>Analyst</td>
-                        <td>Data Analyst</td>
-                        <td>Pune</td>
-                        <td>
-                            <div class="msd">
-                                <label class="msd_label js-msd">Select  <i class="msd_label_icon fas fa-chevron-down"></i></label>
-                                <div class="msd_options_container js-msds">
-                                    <div class="msd_options">
-                                        <label for="finacle4" class="msd_options_option">
-                                            Finacle
-                                            <input id="finacle4" type="checkbox" name="birthrights[]" value="Finacle" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                        <label for="crm4" class="msd_options_option">
-                                            CRM
-                                            <input id="crm4" type="checkbox" name="birthrights[]" value="CRM" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                        <label for="aadhar-vault4" class="msd_options_option">
-                                            Aadhar Vault
-                                            <input id="aadhar-vault4" type="checkbox" name="birthrights[]" value="Aadhar Vault" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11557</td>
-                        <td>Aashlesha Pawar</td>
-                        <td>PM</td>
-                        <td>Project Manager</td>
-                        <td>Chennai</td>
-                        <td>
-                            <div class="msd">
-                                <label class="msd_label js-msd">Select <i class="msd_label_icon fas fa-chevron-down"></i></label>
-                                <div class="msd_options_container js-msds">
-                                    <div class="msd_options">
-                                        <label for="finacle5" class="msd_options_option">
-                                            Finacle
-                                            <input id="finacle5" type="checkbox" name="birthrights[]" value="Finacle" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                        <label for="crm5" class="msd_options_option">
-                                            CRM
-                                            <input id="crm5" type="checkbox" name="birthrights[]" value="CRM" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                        <label for="aadhar-vault5" class="msd_options_option">
-                                            Aadhar Vault
-                                            <input id="aadhar-vault5" type="checkbox" name="birthrights[]" value="Aadhar Vault" class="msd_options_checkbox js-msdCheck">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    <!-- Repeat for other rows -->
                 </tbody>
             </table>
             <div class="submit-container">
@@ -254,14 +221,51 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $(".js-msd").click(function() {
-                $(this).closest('div').find('.js-msds').slideToggle();
+            // Toggle dropdown visibility
+            $(".js-msd").click(function(e) {
+                e.stopPropagation();
+                $(this).closest('.msd').find('.js-msds').slideToggle();
             });
+
+            // Handle checkbox change
             $(".js-msdCheck").change(function() {
-                if($(this).prop("checked") == true){
-                    $(this).parent('label').addClass('msd_options_option-check');
+                const containerId = $(this).closest('td').find('.selected-items').attr('id');
+                const selectedItem = $(this).parent('label').text().trim();
+                const selectedValue = $(this).val();
+                if ($(this).prop("checked")) {
+                    $('#' + containerId).append('<div class="selected-item">' + selectedItem + '<span class="remove" data-value="' + selectedValue + '">&times;</span></div>');
                 } else {
-                    $(this).parent('label').removeClass('msd_options_option-check');
+                    $('#' + containerId + ' .selected-item').filter(function() {
+                        return $(this).text().trim().includes(selectedItem);
+                    }).remove();
+                }
+            });
+
+            // Remove selected item
+            $(document).on('click', '.selected-item .remove', function() {
+                const itemValue = $(this).data('value');
+                $(this).parent().remove();
+                $('input[value="' + itemValue + '"]').prop('checked', false);
+            });
+
+            // Close dropdown when clicking outside
+            $(document).click(function(e) {
+                if (!$(e.target).closest('.msd').length) {
+                    $('.js-msds').slideUp();
+                }
+            });
+
+            // Keep dropdown open when clicking inside
+            $(".js-msds").click(function(e) {
+                e.stopPropagation();
+            });
+
+            // Initialize dropdown visibility
+            $(".js-msdCheck").each(function() {
+                const containerId = $(this).closest('td').find('.selected-items').attr('id');
+                if ($(this).prop("checked")) {
+                    const selectedItem = $(this).parent('label').text().trim();
+                    $('#' + containerId).append('<div class="selected-item">' + selectedItem + '<span class="remove" data-value="' + $(this).val() + '">&times;</span></div>');
                 }
             });
         });
@@ -279,16 +283,6 @@
 
         searchBtn.addEventListener("click", () => {
             sidebar.classList.remove("close");
-        });
-
-        modeSwitch.addEventListener("click", () => {
-            body.classList.toggle("dark");
-            if (body.classList.contains("dark")) {
-                modeText.innerText = "Light mode";
-            } else {
-                modeText.innerText = "Dark mode";
-            }
-            
         });
     </script>
 </body>
