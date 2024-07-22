@@ -5,210 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>iManage Portal</title>
+    <!-- Linking the external CSS file for styling -->
     <link rel="stylesheet" href="style.css" />
+    <!-- Including boxicons for icon usage -->
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .msd {
-            position: relative;
-            display: inline-block;
-            width: 200px; /* Fixed size */
-        }
-        .msd_label {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
-            background: #007bff; /* Attractive background color */
-            color: #fff;
-            text-align: center;
-            font-size: 14px;
-            font-weight: bold; /* Bold text */
-        }
-        .msd_label.centered-text {
-            text-align: center;
-        }
-        .msd_options_container {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            border: 1px solid #ccc;
-            background: #fff;
-            z-index: 10;
-            max-height: 150px;
-            overflow-y: auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Drop shadow */
-        }
-        .msd_options {
-            max-height: 150px;
-            overflow-y: auto;
-        }
-        .msd_options_option {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .msd_options_option:hover {
-            background: #f0f0f0;
-        }
-        .msd_options_option input[type="checkbox"] {
-            margin-right: 10px;
-            accent-color: #007bff; /* Set checkbox circle color to blue */
-        }
-        .selected-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 5px;
-        }
-        .selected-item {
-            display: flex;
-            align-items: center;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: white;
-            font-size: 12px;
-        }
-        .selected-item .remove {
-            margin-left: 5px;
-            cursor: pointer;
-        }
-        .submit-button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            background: #007bff;
-            color: white;
-            font-size: 14px;
-            cursor: pointer;
-            margin: 5px; /* Add some margin between buttons */
-        }
-        .submit-button:hover {
-            background: #0056b3;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background: #f9f9f9;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-        }
-        .header .title {
-            font-size: 24px;
-        }
-        .header .name {
-            display: flex;
-            align-items: center;
-            font-size: 18px;
-        }
-        .header .name i {
-            margin-right: 10px;
-        }
-        .sidebar {
-            width: 250px;
-            background: #333;
-            color: white;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            transition: width 0.3s;
-            overflow: hidden;
-        }
-        .sidebar.close {
-            width: 80px;
-        }
-        .sidebar header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background: #444;
-        }
-        .sidebar .menu-bar {
-            flex-grow: 1;
-            padding: 20px 0;
-        }
-        .sidebar .menu-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar .menu-links li {
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        .sidebar .menu-links li:hover {
-            background: #555;
-        }
-        .sidebar .menu-links li a {
-            text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-        .sidebar .menu-links li a .icon {
-            margin-right: 10px;
-        }
-        .sidebar .bottom-content {
-            padding: 20px;
-            background: #444;
-        }
-        .sidebar .bottom-content li {
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        .sidebar .bottom-content li:hover {
-            background: #555;
-        }
-        .sidebar .bottom-content li a {
-            text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-        .sidebar .bottom-content li a .icon {
-            margin-right: 10px;
-        }
-        .table-controls {
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .table-controls input[type="search"] {
-            padding: 5px;
-            width: 200px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+        /* Custom inline styles for various elements */
     </style>
 </head>
 <body>
+    <!-- Sidebar navigation menu -->
     <nav class="sidebar close">
         <header>
             <div class="image-text">
@@ -224,61 +30,30 @@
         </header>
         <div class="menu-bar">
             <div class="menu">
+                <!-- Navigation links -->
                 <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="bx bxs-home icon"></i>
-                            <span class="text nav-text">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="bx bxs-user-plus icon"></i>
-                            <span class="text nav-text">New Request</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="bx bxs-user-circle icon"></i>
-                            <span class="text nav-text">Request</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="bx bxs-user-check icon"></i>
-                            <span class="text nav-text">UAR</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="bx bxs-right-top-arrow-circle icon"></i>
-                            <span class="text nav-text">Birthrights</span>
-                        </a>
-                    </li>
+                    <li class="nav-link"><a href="#"><i class="bx bxs-home icon"></i><span class="text nav-text">Dashboard</span></a></li>
+                    <li class="nav-link"><a href="#"><i class="bx bxs-user-plus icon"></i><span class="text nav-text">New Request</span></a></li>
+                    <li class="nav-link"><a href="#"><i class="bx bxs-user-circle icon"></i><span class="text nav-text">Request</span></a></li>
+                    <li class="nav-link"><a href="#"><i class="bx bxs-user-check icon"></i><span class="text nav-text">UAR</span></a></li>
+                    <li class="nav-link"><a href="#"><i class="bx bxs-right-top-arrow-circle icon"></i><span class="text nav-text">Birthrights</span></a></li>
                 </ul>
             </div>
+            <!-- Bottom content links for profile and logout -->
             <div class="bottom-content">
-                <li>
-                    <a href="#">
-                        <i class="bx bx-user icon"></i>
-                        <span class="text nav-text">Profile</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="bx bx-log-out icon"></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
+                <li><a href="#"><i class="bx bx-user icon"></i><span class="text nav-text">Profile</span></a></li>
+                <li><a href="#"><i class="bx bx-log-out icon"></i><span class="text nav-text">Logout</span></a></li>
             </div>
         </div>
     </nav>
+    <!-- Main content section -->
     <section class="home">
         <div class="header">
             <div class="title">Birthrights</div>
             <div class="name"><i class="bx bx-user-circle icon-profile"></i>Saurabh Mathe</div>
         </div>
         <div class="table-container">
+            <!-- Search bar above the table -->
             <div class="table-controls">
                 <input type="search" id="search" placeholder="Search" />
             </div>
@@ -301,6 +76,7 @@
                         <td>Associate</td>
                         <td>RBL Mumbai</td>
                         <td>
+                            <!-- Multi-select dropdown for birthrights -->
                             <div class="msd">
                                 <div class="msd_label centered-text">Select Birthrights</div>
                                 <div class="msd_options_container">
@@ -317,23 +93,28 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Container to show selected items -->
                             <div class="selected-items" id="selected-items-1"></div>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <!-- Submit and cancel buttons for form actions -->
         <div class="form-actions">
             <button class="submit-button">Submit</button>
             <button class="submit-button">Cancel</button>
         </div>
     </section>
+    <!-- jQuery for handling DOM manipulations and events -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
+            // Toggle the visibility of the options container
             $(".msd_label").click(function () {
                 $(this).siblings(".msd_options_container").toggle();
             });
+            // Handle checkbox selection and updating selected items container
             $(".js-msdCheck").change(function () {
                 const selectedItem = $(this).parent('label').text().trim();
                 const container = $(this).closest('td').find('.selected-items');
@@ -343,19 +124,23 @@
                     container.find('.remove[data-value="' + $(this).val() + '"]').parent('.selected-item').remove();
                 }
             });
+            // Remove selected item on click of remove button
             $(document).on('click', '.remove', function () {
                 const value = $(this).data('value');
                 $(this).parent('.selected-item').remove();
                 $('.js-msdCheck[value="' + value + '"]').prop("checked", false);
             });
+            // Hide options container when clicking outside
             $(document).click(function (e) {
                 if (!$(e.target).closest('.msd').length) {
                     $(".msd_options_container").hide();
                 }
             });
+            // Prevent event propagation
             $(".js-msds").click(function (e) {
                 e.stopPropagation();
             });
+            // Initialize already selected checkboxes
             $(".js-msdCheck").each(function () {
                 const containerId = $(this).closest('td').find('.selected-items').attr('id');
                 if ($(this).prop("checked")) {
@@ -363,6 +148,7 @@
                     $('#' + containerId).append('<div class="selected-item">' + selectedItem + '<span class="remove" data-value="' + $(this).val() + '">&times;</span></div>');
                 }
             });
+            // Sidebar toggle functionality
             const body = document.querySelector("body"),
                 sidebar = body.querySelector("nav"),
                 toggle = body.querySelector(".toggle"),
